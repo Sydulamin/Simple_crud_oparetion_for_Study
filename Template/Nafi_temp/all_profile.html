@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Index Page {% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for human in human %}
+        <div class="col">
+            <div class="card" style="height:350px; width:300px;">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Human Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="fw-bold">Name:</label>
+                        <p class="card-text">{{ human.name }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">Email:</label>
+                        <p class="card-text">{{ human.email }}</p>
+                    </div>
+                    {% if human.image %}
+                    <img style="height:100px; width:100px" src="{{ human.image.url }}" class="img-fluid mb-3"
+                         alt="{{ human.name }}">
+                    {% endif %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'Update' human.id %}" class="btn btn-success">Update</a>
+                        <a href="{% url 'delete_prof' human.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+{% endblock %}
