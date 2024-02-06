@@ -65,3 +65,7 @@ def Update(request, id):
             return redirect('all_prof')
 
     return render(request, 'Nafi_temp/update.html', locals())
+
+
+def test(request):
+    return 0
